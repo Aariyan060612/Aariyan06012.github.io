@@ -1,0 +1,361 @@
+/* * PRESTIGE DEVELOPER PORTFOLIO STYLESHEET
+ * Theme: Cyber Slate & Electric Indigo 
+ */
+
+/* --- Design Tokens & Variables --- */
+:root {
+    --bg-main: #0b0f19;         /* Deep rich dark background */
+    --bg-card: #131c2e;         /* High-contrast element containers */
+    --border-color: #222f47;    /* Subtle geometric borders */
+    
+    /* Typography Colors */
+    --text-primary: #f1f5f9;    /* Clean off-white for structural readability */
+    --text-secondary: #94a3b8;  /* Muted slate for descriptions */
+    
+    /* Branding Accent Spectrum */
+    --accent-glow: rgba(99, 102, 241, 0.15);
+    --accent-primary: #6366f1;   /* Electric Indigo */
+    --accent-secondary: #06b6d4; /* Neon Cyan */
+    --accent-gradient: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+    
+    /* Animation Easings */
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Core Page Resets & System Setup --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 20px;
+    border: 2px solid var(--bg-main);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* --- Navigation Header (Glassmorphic Top-Bar) --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 8%;
+    position: sticky;
+    top: 0;
+    background-color: rgba(11, 15, 25, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(34, 47, 71, 0.5);
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-left: 2.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: var(--accent-gradient);
+    transition: var(--transition-smooth);
+}
+
+nav a:hover {
+    color: var(--text-primary);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Hero Section (Immersive Typography) --- */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    position: relative;
+}
+
+/* Structural Background Blur Node */
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: var(--accent-gradient);
+    filter: blur(150px);
+    opacity: 0.12;
+    top: 10%;
+    right: 10%;
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+}
+
+.highlight {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    color: var(--accent-secondary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.bio {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    max-width: 640px;
+}
+
+/* Premium Button Architecture */
+.btn {
+    display: inline-block;
+    background: var(--accent-gradient);
+    color: #ffffff;
+    padding: 0.9rem 2.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+    transition: var(--transition-smooth);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 26px rgba(99, 102, 241, 0.45);
+}
+
+/* --- Projects Section (Bento / Grid Architecture) --- */
+.projects-section {
+    padding: 8rem 8%;
+}
+
+.projects-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 4rem;
+    text-align: center;
+    position: relative;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Elite Glassmorphic Cards */
+.project-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-gradient);
+    opacity: 0;
+    z-index: 1;
+    transition: var(--transition-smooth);
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: #3b4f74;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--accent-glow);
+}
+
+.project-card:hover::before {
+    opacity: 0.03;
+}
+
+.card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--accent-secondary);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.3px;
+}
+
+.project-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    line-height: 1.6;
+}
+
+/* Micro-interaction Meta Tags */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+}
+
+.tech-tags span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: rgba(34, 47, 71, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.35rem 0.9rem;
+    border-radius: 6px;
+    color: #cbd5e1;
+}
+
+.project-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.project-card:hover .project-link {
+    color: var(--accent-primary);
+}
+
+/* --- Clean Footer Design --- */
+footer {
+    background-color: #060910;
+    padding: 6rem 8% 3rem 8%;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+footer h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.social-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.social-links a:hover {
+    color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.copyright {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #334155 !important;
+}
+
+/* --- Advanced Viewport Adjustments (Mobile Optimized) --- */
+@media (max-width: 968px) {
+    .hero-content h1 { font-size: 3rem; }
+    .projects-section { padding: 5rem 6%; }
+    .hero { padding: 0 6%; }
+}
+
+@media (max-width: 768px) {
+    header { padding: 1.2rem 5%; }
+    nav a { margin-left: 1.2rem; font-size: 0.9rem; }
+    .hero-content h1 { font-size: 2.4rem; }
+    .subtitle { font-size: 1.1rem; }
+    .bio { font-size: 1rem; }
+    .social-links { gap: 1.5rem; }
+}
